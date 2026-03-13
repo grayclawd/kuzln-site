@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kuzln Labs — Brand. Web. Automation.</title>
   <meta name="description" content="Kuzln Labs builds brands, websites, and automation systems that scale your business.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self';">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" crossorigin>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -400,9 +401,56 @@
       font-size: 0.85rem;
     }
 
+    /* HAMBURGER */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 101;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
     /* MOBILE */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 29, 46, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+        z-index: 99;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links a {
+        font-size: 1.25rem;
+      }
+
       .hero { padding: 8rem 1.5rem 4rem; }
       .hero-cta { flex-direction: column; }
       .tiers { grid-template-columns: 1fr; }
@@ -440,11 +488,14 @@
       </svg>
       <span>KUZLN</span>
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- STARS BACKGROUND -->
@@ -598,7 +649,7 @@
     <div class="cta-box">
       <h2>Ready to build?</h2>
       <p>Tell us where you are and where you want to go. We'll figure out the fastest path.</p>
-      <a href="mailto:hello@kuzln.ai" class="btn btn-primary">hello@kuzln.ai</a>
+      <a href="#" class="btn btn-primary" id="contact-btn">Get in Touch</a>
     </div>
   </section>
 
@@ -616,13 +667,14 @@
   function resize() {
     canvas.width = canvas.offsetWidth * devicePixelRatio;
     canvas.height = canvas.offsetHeight * devicePixelRatio;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.scale(devicePixelRatio, devicePixelRatio);
     init();
   }
 
   function init() {
     const w = canvas.offsetWidth, h = canvas.offsetHeight;
-    const count = Math.floor((w * h) / 3000);
+    const count = Math.min(Math.floor((w * h) / 3000), 1000);
     stars = [];
     for (let i = 0; i < count; i++) {
       stars.push({
@@ -651,6 +703,34 @@
   window.addEventListener('resize', resize);
   resize();
   requestAnimationFrame(draw);
+})();
+
+// Mobile nav toggle
+(function() {
+  var btn = document.getElementById('hamburger');
+  var nav = document.getElementById('navLinks');
+  btn.addEventListener('click', function() {
+    btn.classList.toggle('active');
+    nav.classList.toggle('open');
+  });
+  nav.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      btn.classList.remove('active');
+      nav.classList.remove('open');
+    });
+  });
+})();
+
+// Email obfuscation — assembled at runtime to defeat scrapers
+(function() {
+  var b = document.getElementById('contact-btn');
+  var u = 'hello'; var d = 'kuzln'; var t = 'ai';
+  var addr = u + '@' + d + '.' + t;
+  b.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = 'mail' + 'to:' + addr;
+  });
+  b.textContent = addr;
 })();
 </script>
 </body>
