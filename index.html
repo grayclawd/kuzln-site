@@ -398,15 +398,47 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
         <defs>
-          <linearGradient id="navGrad" x1="30" y1="20" x2="170" y2="180" gradientUnits="userSpaceOnUse">
+          <linearGradient id="navGrad" x1="25" y1="15" x2="175" y2="185" gradientUnits="userSpaceOnUse">
             <stop offset="0%" stop-color="#FFF0E0"/>
             <stop offset="45%" stop-color="#E8642C"/>
             <stop offset="100%" stop-color="#C0401A"/>
           </linearGradient>
+          <mask id="navSparkMask">
+            <rect x="-50" y="-50" width="300" height="300" fill="white"/>
+            <circle cx="100" cy="100" r="76" fill="black"/>
+          </mask>
         </defs>
-        <path d="M 155,58 A 72,72 0 1,0 152,128 L 143,125 A 62,62 0 1,1 146,65 Z" fill="url(#navGrad)"/>
+        <!-- Tapered C arc matching hero -->
+        <circle cx="100" cy="100" r="69"
+          stroke="url(#navGrad)" stroke-width="14" fill="none"
+          stroke-dasharray="370 64" stroke-linecap="butt"/>
+        <circle cx="100" cy="100" r="71"
+          stroke="url(#navGrad)" stroke-width="10" fill="none"
+          stroke-dasharray="19 427" stroke-dashoffset="-378" stroke-linecap="butt"/>
+        <circle cx="100" cy="100" r="73"
+          stroke="url(#navGrad)" stroke-width="6" fill="none"
+          stroke-dasharray="18 441" stroke-dashoffset="-406" stroke-linecap="round"/>
+        <circle cx="100" cy="100" r="71"
+          stroke="url(#navGrad)" stroke-width="10" fill="none"
+          stroke-dasharray="10 436" stroke-dashoffset="6" stroke-linecap="butt"/>
+        <circle cx="100" cy="100" r="73"
+          stroke="url(#navGrad)" stroke-width="6" fill="none"
+          stroke-dasharray="9 450" stroke-dashoffset="15" stroke-linecap="round"/>
+        <!-- Spark lines -->
+        <g stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.9" mask="url(#navSparkMask)">
+          <line x1="162" y1="141" x2="174" y2="150"/>
+          <line x1="162" y1="141" x2="179" y2="155"/>
+          <line x1="162" y1="141" x2="187" y2="166"/>
+          <line x1="162" y1="141" x2="194" y2="179"/>
+          <line x1="162" y1="141" x2="196" y2="190"/>
+          <line x1="162" y1="141" x2="186" y2="183"/>
+          <line x1="162" y1="141" x2="176" y2="173"/>
+          <line x1="162" y1="141" x2="171" y2="165"/>
+          <line x1="162" y1="141" x2="165" y2="157"/>
+          <line x1="162" y1="141" x2="163" y2="152"/>
+        </g>
       </svg>
       <span>KUZLN</span>
     </a>
