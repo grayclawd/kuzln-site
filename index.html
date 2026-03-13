@@ -398,48 +398,26 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
+      <svg viewBox="170 130 460 390" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="navGrad" x1="25" y1="15" x2="175" y2="185" gradientUnits="userSpaceOnUse">
+          <linearGradient id="navGrad" x1="0.2" y1="0" x2="0.9" y2="1">
             <stop offset="0%" stop-color="#FFF0E0"/>
             <stop offset="45%" stop-color="#E8642C"/>
             <stop offset="100%" stop-color="#C0401A"/>
           </linearGradient>
-          <mask id="navSparkMask">
-            <rect x="-50" y="-50" width="300" height="300" fill="white"/>
-            <circle cx="100" cy="100" r="76" fill="black"/>
-          </mask>
         </defs>
-        <!-- Tapered C arc — rotated so gap aligns with sparks -->
-        <g transform="rotate(61, 100, 100)">
-          <circle cx="100" cy="100" r="69"
-            stroke="url(#navGrad)" stroke-width="14" fill="none"
-            stroke-dasharray="370 64" stroke-linecap="butt"/>
-          <circle cx="100" cy="100" r="71"
-            stroke="url(#navGrad)" stroke-width="10" fill="none"
-            stroke-dasharray="19 427" stroke-dashoffset="-378" stroke-linecap="butt"/>
-          <circle cx="100" cy="100" r="73"
-            stroke="url(#navGrad)" stroke-width="6" fill="none"
-            stroke-dasharray="18 441" stroke-dashoffset="-406" stroke-linecap="round"/>
-          <circle cx="100" cy="100" r="71"
-            stroke="url(#navGrad)" stroke-width="10" fill="none"
-            stroke-dasharray="10 436" stroke-dashoffset="6" stroke-linecap="butt"/>
-          <circle cx="100" cy="100" r="73"
-            stroke="url(#navGrad)" stroke-width="6" fill="none"
-            stroke-dasharray="9 450" stroke-dashoffset="15" stroke-linecap="round"/>
-        </g>
-        <!-- Spark lines -->
-        <g stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.9" mask="url(#navSparkMask)">
-          <line x1="162" y1="141" x2="174" y2="150"/>
-          <line x1="162" y1="141" x2="179" y2="155"/>
-          <line x1="162" y1="141" x2="187" y2="166"/>
-          <line x1="162" y1="141" x2="194" y2="179"/>
-          <line x1="162" y1="141" x2="196" y2="190"/>
-          <line x1="162" y1="141" x2="186" y2="183"/>
-          <line x1="162" y1="141" x2="176" y2="173"/>
-          <line x1="162" y1="141" x2="171" y2="165"/>
-          <line x1="162" y1="141" x2="165" y2="157"/>
-          <line x1="162" y1="141" x2="163" y2="152"/>
+        <path d="M 520,235 A 175,175 0 1,0 530,390 L 515,385 A 155,155 0 1,1 505,255 Z" fill="url(#navGrad)"/>
+        <g stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.9">
+          <line x1="525" y1="388" x2="585" y2="335"/>
+          <line x1="525" y1="388" x2="608" y2="345"/>
+          <line x1="525" y1="388" x2="590" y2="360"/>
+          <line x1="525" y1="388" x2="600" y2="375"/>
+          <line x1="525" y1="388" x2="605" y2="392"/>
+          <line x1="525" y1="388" x2="600" y2="410"/>
+          <line x1="525" y1="388" x2="592" y2="428"/>
+          <line x1="525" y1="388" x2="580" y2="442"/>
+          <line x1="525" y1="388" x2="565" y2="452"/>
+          <line x1="525" y1="388" x2="548" y2="458"/>
         </g>
       </svg>
       <span>KUZLN</span>
