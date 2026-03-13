@@ -410,22 +410,24 @@
             <circle cx="100" cy="100" r="76" fill="black"/>
           </mask>
         </defs>
-        <!-- Tapered C arc matching hero -->
-        <circle cx="100" cy="100" r="69"
-          stroke="url(#navGrad)" stroke-width="14" fill="none"
-          stroke-dasharray="370 64" stroke-linecap="butt"/>
-        <circle cx="100" cy="100" r="71"
-          stroke="url(#navGrad)" stroke-width="10" fill="none"
-          stroke-dasharray="19 427" stroke-dashoffset="-378" stroke-linecap="butt"/>
-        <circle cx="100" cy="100" r="73"
-          stroke="url(#navGrad)" stroke-width="6" fill="none"
-          stroke-dasharray="18 441" stroke-dashoffset="-406" stroke-linecap="round"/>
-        <circle cx="100" cy="100" r="71"
-          stroke="url(#navGrad)" stroke-width="10" fill="none"
-          stroke-dasharray="10 436" stroke-dashoffset="6" stroke-linecap="butt"/>
-        <circle cx="100" cy="100" r="73"
-          stroke="url(#navGrad)" stroke-width="6" fill="none"
-          stroke-dasharray="9 450" stroke-dashoffset="15" stroke-linecap="round"/>
+        <!-- Tapered C arc — rotated so gap aligns with sparks -->
+        <g transform="rotate(61, 100, 100)">
+          <circle cx="100" cy="100" r="69"
+            stroke="url(#navGrad)" stroke-width="14" fill="none"
+            stroke-dasharray="370 64" stroke-linecap="butt"/>
+          <circle cx="100" cy="100" r="71"
+            stroke="url(#navGrad)" stroke-width="10" fill="none"
+            stroke-dasharray="19 427" stroke-dashoffset="-378" stroke-linecap="butt"/>
+          <circle cx="100" cy="100" r="73"
+            stroke="url(#navGrad)" stroke-width="6" fill="none"
+            stroke-dasharray="18 441" stroke-dashoffset="-406" stroke-linecap="round"/>
+          <circle cx="100" cy="100" r="71"
+            stroke="url(#navGrad)" stroke-width="10" fill="none"
+            stroke-dasharray="10 436" stroke-dashoffset="6" stroke-linecap="butt"/>
+          <circle cx="100" cy="100" r="73"
+            stroke="url(#navGrad)" stroke-width="6" fill="none"
+            stroke-dasharray="9 450" stroke-dashoffset="15" stroke-linecap="round"/>
+        </g>
         <!-- Spark lines -->
         <g stroke="white" stroke-width="1.2" stroke-linecap="round" opacity="0.9" mask="url(#navSparkMask)">
           <line x1="162" y1="141" x2="174" y2="150"/>
