@@ -76,7 +76,8 @@ def api_request(method, endpoint, data=None, api_key=None):
     req = Request(url, data=body, headers=headers, method=method)
     try:
         with urlopen(req) as resp:
-            return json.loads(resp.read().decode()) if resp.read() else {}
+            raw = resp.read().decode()
+            return json.loads(raw) if raw else {}
     except HTTPError as e:
         body = e.read().decode()
         if e.code == 409:
@@ -292,7 +293,7 @@ def main():
     p_dc = deal_sub.add_parser("create", help="Create a deal")
     p_dc.add_argument("--name", required=True, help="Deal name")
     p_dc.add_argument("--contact", help="Contact email to associate")
-    p_dc.add_argument("--pipeline", choices=["services", "spinsite"], default="services")
+    p_dc.add_argument("--pipeline", default="default")
     p_dc.add_argument("--stage", default="lead")
     p_dc.add_argument("--amount", type=float)
 
