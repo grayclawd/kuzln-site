@@ -60,7 +60,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 100;
+      z-index: 1000;
       padding: 1.25rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -138,7 +138,6 @@
     .hero-logo .logo-spin {
       animation: spin 6.25s linear infinite;
       transform-origin: 200px 200px;
-      will-change: transform;
     }
 
     @keyframes spin {
@@ -542,7 +541,7 @@
       border: none;
       cursor: pointer;
       padding: 4px;
-      z-index: 201;
+      z-index: 1002;
     }
 
     .hamburger span {
@@ -569,12 +568,12 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(26, 29, 46, 0.98);
+        background: #1A1D2E;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 2.5rem;
-        z-index: 200;
+        z-index: 1001;
       }
 
       .nav-links.open { display: flex; }
