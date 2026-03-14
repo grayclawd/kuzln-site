@@ -557,30 +557,41 @@
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
+    /* MOBILE NAV OVERLAY — lives outside <nav> to avoid stacking issues */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #1A1D2E;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      z-index: 9999;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      color: var(--gray-light);
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+
+    .mobile-nav a:hover { color: var(--orange); }
+
     /* MOBILE */
     @media (max-width: 768px) {
-      .hamburger { display: flex; }
-
-      .nav-links {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #1A1D2E;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2.5rem;
-        z-index: 1001;
-      }
-
-      .nav-links.open { display: flex; }
-
-      .nav-links a {
-        font-size: 1.25rem;
-      }
+      .hamburger { display: flex; z-index: 10000; }
+      .nav-desktop { display: none; }
 
       .hero { padding: 8rem 1.5rem 4rem; }
       .hero-cta { flex-direction: column; }
@@ -624,7 +635,7 @@
       </svg>
       <span>KUZLN</span>
     </a>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav-links nav-desktop">
       <li><a href="#services">Services</a></li>
       <li><a href="#process">Process</a></li>
       <li><a href="#about">About</a></li>
@@ -634,6 +645,14 @@
       <span></span><span></span><span></span>
     </button>
   </nav>
+
+  <!-- Mobile nav overlay — outside nav to avoid stacking context issues -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services">Services</a>
+    <a href="#process">Process</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
 
   <!-- STARS BACKGROUND -->
   <canvas class="stars-canvas" id="stars"></canvas>
@@ -874,7 +893,7 @@
 // Mobile nav toggle
 (function() {
   var btn = document.getElementById('hamburger');
-  var nav = document.getElementById('navLinks');
+  var nav = document.getElementById('mobileNav');
   btn.addEventListener('click', function() {
     btn.classList.toggle('active');
     nav.classList.toggle('open');
