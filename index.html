@@ -588,6 +588,19 @@
 
     .mobile-nav a:hover { color: var(--orange); }
 
+    .mobile-nav-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      line-height: 1;
+    }
+
     /* MOBILE */
     @media (max-width: 768px) {
       .hamburger { display: flex; z-index: 10000; }
@@ -648,6 +661,7 @@
 
   <!-- Mobile nav overlay — outside nav to avoid stacking context issues -->
   <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close navigation">&times;</button>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#about">About</a>
@@ -894,15 +908,15 @@
 (function() {
   var btn = document.getElementById('hamburger');
   var nav = document.getElementById('mobileNav');
+  var closeBtn = document.getElementById('mobileNavClose');
+  function openNav() { btn.classList.add('active'); nav.classList.add('open'); }
+  function closeNav() { btn.classList.remove('active'); nav.classList.remove('open'); }
   btn.addEventListener('click', function() {
-    btn.classList.toggle('active');
-    nav.classList.toggle('open');
+    nav.classList.contains('open') ? closeNav() : openNav();
   });
+  closeBtn.addEventListener('click', closeNav);
   nav.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      btn.classList.remove('active');
-      nav.classList.remove('open');
-    });
+    a.addEventListener('click', closeNav);
   });
 })();
 
